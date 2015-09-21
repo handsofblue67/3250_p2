@@ -1,66 +1,85 @@
 package com.cs3250;
 
-public class VerifyArgs
-{
-    public String rawArguments;
-    public String[] separatedArgs;
-    public boolean andMatch = true;
-    ArrayList<String[]> pairs = new ArrayList<String[]>();
-    public VerifyArgs(String _rawArguments)
-    {
-	rawArguments = _rawArguments.toLowerCase();
+public class VerifyArgs {
+    private String rawArg;
+    private String[] sepArgs;
+    private boolean andMatch = true;
+    private ArrayList<ParaSet> pairs;
+
+    public VerifyArgs(String _rawArg) {
+        rawArg = _rawArg.toLowerCase();
+        pairs = new ArrayList<paraSet>();
     }
 
-    public void separateAndOr()
+    public void sepAndOr() {
+        rawArg.trim();
+    }
+
+    if(rawArg.equals(""))
+
     {
-	rawArguments.trim();
+        return; //print everything
+    }
 
-	if(rawArguments.equals(""))
-	{
-	   return; //print everything
-	}
-	
-	//search or " orMatch" if so, cut it off
-	if(rawArguments.contains(" ormatch"))
-	{
-	    rawArguments.replaceFirst(" ormatch", "");
-	    andMatch = false;
-	}
-	
-	//search for " andMatch" if so cut it off
-	else if(rawArguments.contains(" andmatch"))
-	{
-	    rawArguments.replaceFirst(" andmatch", "");
-	}
-	
-	//split array pairs, if odd number, error
-	separatedArgs = rawArguments.split(" ");
-	if(separatedArgs.length % 2 != 0)
-	{
-	    //invalid arguments
-	}
+    //search or " orMatch" if so, cut it off
+    if(rawArg.contains(" ormatch"))
 
-	else
-	{
-	    for (int i = 0; i < separatedArgs.length; ++i)
-	    {
-		if(separatedArgs[i].equals("^"))
-		{
-		    pairs.add({"^", ++separatedArgs[i]('^)})
-		}
+    {
+        rawArg.replaceFirst(" ormatch", "");
+        andMatch = false;
+    }
 
-		else if(separatedArgs[i].equals("$"))
-		{
-		    //create object of searchPair('&', ++separatedArgs)
-		}
+    //search for " andMatch" if so cut it off
+    else if(rawArg.contains(" andmatch"))
 
-		else if(separatedArgs[i].equals("*"))
-		{
-		    //create object of searchPair('*' ++separatedArgs)
-		}
+    {
+        rawArg.replaceFirst(" andmatch", "");
+    }
 
-		//else if(separatedArgs[i]
-	    }
-	}
+    //split array pairs, if odd number, error
+    sepArgs=rawArg.split(" ");
+    if(sepArgs.length%2!=0)
+
+    {
+        throw ("invalid argument");
+    }
+
+    else
+
+    {
+        for (int i = 0; i < sepArgs.length; ++i) {
+            if (sepArgs[i].equals("^"))
+        }
+        Special thing = FIRST;
+        pairs.add(new ParaSet(thing, sepArgs[++i]));
+    }
+
+    else if(sepArgs[i].
+
+    equals("$")
+
+    )
+
+    {
+        Special thing = LAST;
+        pairs.add(new ParaSet(thing, sepArgs[++i]));
+    }
+
+    else if(sepArgs[i].
+
+    equals("*")
+
+    )
+
+    {
+        Special thing = ANY;
+        pairs.add(new ParaSet(thing, sepArgs[++i]));
+    }
+
+    else if(separatedArgs[i].
+
+    matches("\\d+") {
+        Special thing = NUM;
+        pairs.add(new ParaSet(thing, sepArgs[i], sepArgs[++i]));
     }
 }
