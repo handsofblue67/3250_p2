@@ -70,8 +70,13 @@ class Search {
                             break;
                         }
                         case (ANY): {
-                            if (astrix(temp, pair)) {
-                                isMatch = true;
+                            case (FIRST): {
+                                if (carot(temp, pair)) {
+                                    isMatch = true;
+                                }
+                                else {
+                                    isMatch = false;
+                                }
                             }
                             else {
                                 isMatch = false;
@@ -88,29 +93,41 @@ class Search {
                         }
                         case (LAST): {
                             if (dollar(temp, pair)) {
-
+                                isMatch = true;
                             }
-                        }
-                        case (NUM): {
-                            if (number(temp, pair)) {
-
+                            else {
+                                isMatch = false;
                             }
-                        }
-                        case (ANY): {
-                            if (astrix(temp, pair)) {
+                            break;
 
-                            }
                         }
                     }
+                    case (NUM): {
+                        if (number(temp, pair)) {
+                        }
+                        else {
+                            isMatch = false;
+                        }
+                        break;
+                    }
                 }
-
+                case (ANY): {
+                    if (astrix(temp, pair)) {
+                        isMatch = true;
+                    }
+                    else {
+                        isMatch = false;
+                    }
+                    break;
+                }
             }
-            if(isMatch) {
-                System.out.println(count + " " + temp);
-            }
-            ++count;
         }
+        if(isMatch) {
+            System.out.println(count + " " + temp);
+        }
+        ++count;
     }
+}
 
     public static boolean number(String _compare, Pair _pair)
     {
@@ -148,3 +165,4 @@ class Search {
         return flag;
     }
 }
+
