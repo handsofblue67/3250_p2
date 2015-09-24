@@ -1,19 +1,30 @@
 package com.cs3250;
 
 public class Pair {
-    protected char ch;
-    protected int num;
-    protected Special spec;
+    private char ch;
+    private int num;
+    private Operator op;
 
-    public Pair(Special _spec, int _num, char _ch) {
-        spec = _spec;
+    public Pair(Operator _op, int _num, char _ch) {
+        op = _op;
         num = _num;
         ch = _ch;
     }
 
-    public Pair(Special _spec, char _ch) {
-        spec = _spec;
-        ch = _ch
+    public Pair(Operator _op, char _ch) {
+        op = _op;
+        ch = _ch;
     }
 
+    public Operator getOp() {
+        return op;
+    }
+
+    public char getCh() {
+        return ch;
+    }
+
+    public int getNum() {
+        return num;
+    }
 }
