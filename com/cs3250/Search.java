@@ -34,10 +34,10 @@ class Search {
         Pair pair;
         String temp;
         boolean isMatch = false;
+        int count = 1; //keeps track of line number
         //use each argument pair to search file
         while (scan.hasNext()) {
             temp = scan.Next();
-            int count = 1; //keeps track of line number
             for(int i = 0; i < _pairs.size(); ++i) {
                 pair = _pairs.get(i);
                 if (verify.getAndMatch() == true && isMatch) {
@@ -70,17 +70,12 @@ class Search {
                             break;
                         }
                         case (ANY): {
-                            case (FIRST): {
-                                if (carot(temp, pair)) {
+                                if (astrix(temp, pair)) {
                                     isMatch = true;
                                 }
                                 else {
                                     isMatch = false;
                                 }
-                            }
-                            else {
-                                isMatch = false;
-                            }
                             break;
                         }
                     }
@@ -121,13 +116,13 @@ class Search {
                     break;
                 }
             }
+            ++count;
         }
         if(isMatch) {
             System.out.println(count + " " + temp);
         }
         ++count;
     }
-}
 
     public static boolean number(String _compare, Pair _pair)
     {
