@@ -114,7 +114,10 @@ public class Search {
 
     public static boolean number(String _compare, Pair _pair) {
         boolean flag = false;
-        if (_compare.charAt(_pair.getNum()) == _pair.getCh()) {
+        if(_pair.getNum() < _compare.length()) {
+            flag = false;
+        }
+        else if (_compare.charAt(_pair.getNum()) == _pair.getCh()) {
             flag = true;
         }
         return flag;
