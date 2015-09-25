@@ -20,14 +20,15 @@ public class Search {
         Pair pair;
         String temp;
         boolean isMatch = false;
-        int count = 1; //keeps track of line number
+        int count = 0; //keeps track of line number
         //use each argument pair to search file
         Scanner scan = null;
         try {
             //if(args[1].matches("([(\\d+)(\\Q^\\E)(\\Q$\\E)(\\Q*\\E )](\\s)(.)*[(andMatch)(orMatch)]?")) {}
             scan = new Scanner(new File(args[0]));
             while (scan.hasNextLine()) {
-                temp = scan.next();
+                ++count;
+                temp = scan.next().toLowerCase();
                 if (verify.getAndMatch()) {
                     andOut:
                     for (int i = 0; i < _pairs.size(); ++i) {
@@ -38,22 +39,19 @@ public class Search {
                             switch (op) {
                                 case FIRST: {
                                     isMatch = carrot(temp, pair);
-                                    if (!isMatch) {
                                         break andOut;
-                                    }
-                                    break;
                                 }
                                 case LAST: {
                                     isMatch = money(temp, pair);
-                                    break;
+                                        break andOut;
                                 }
                                 case NUM: {
                                     isMatch = number(temp, pair);
-                                    break;
+                                        break andOut;
                                 }
                                 case ANY: {
                                     isMatch = astrix(temp, pair);
-                                    break;
+                                        break andOut;
                                 }
                             }
                         }
@@ -68,31 +66,19 @@ public class Search {
                             switch (op) {
                                 case FIRST: {
                                     isMatch = carrot(temp, pair);
-                                    if (isMatch) {
                                         break orOut;
-                                    }
-                                    break;
                                 }
                                 case LAST: {
                                     isMatch = money(temp, pair);
-                                    if (isMatch) {
                                         break orOut;
-                                    }
-                                    break;
                                 }
                                 case NUM: {
                                     isMatch = number(temp, pair);
-                                    if (isMatch) {
                                         break orOut;
-                                    }
-                                    break;
                                 }
                                 case ANY: {
                                     isMatch = astrix(temp, pair);
-                                    if (isMatch) {
                                         break orOut;
-                                    }
-                                    break;
                                 }
                             }
                         }
@@ -101,7 +87,6 @@ public class Search {
                 if (isMatch) {
                     System.out.println(count + " " + temp);
                 }
-                ++count;
             }
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
