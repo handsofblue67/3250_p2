@@ -16,7 +16,7 @@ public class Pair {
         ch = _ch;
     }
 
-    public Operator getOp() {
+    public Operator  getOp() {
         return op;
     }
 

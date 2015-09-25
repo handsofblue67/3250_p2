@@ -3,7 +3,6 @@ package com.cs3250;
 import java.util.*;
 public class VerifyArgs {
     private String rawArg;
-    private String[] sepArgs;
     private boolean andMatch;
     private ArrayList<Pair> pairs;
 
@@ -11,11 +10,11 @@ public class VerifyArgs {
         rawArg = _rawArg.toLowerCase();
         pairs = new ArrayList<Pair>();
         andMatch = true;
-
     }
 
     public void sepAndOr() {
         rawArg.trim();
+        String[] sepArgs;
 
         if (rawArg.equals("")) {
             return; //print everything
@@ -36,33 +35,25 @@ public class VerifyArgs {
         //split array pairs, if odd number, error
         sepArgs = rawArg.split(" ");
         if (sepArgs.length % 2 != 0) {
-            throw ("invalid argument");
+            throw new IllegalArgumentException("Illegal Argument");
         } else {
             for (int i = 0; i < sepArgs.length; ++i) {
                 if (sepArgs[i].equals("^")) {
-                    Operator thing = FIRST;
-                    pairs.add(new Pair(thing, sepArgs[++i]));
+                    com.cs3250.Operator thing = Operator.FIRST;
+                    pairs.add(new Pair(thing, sepArgs[i].charAt(++i)));
                 } else if (sepArgs[i].equals("$")) {
-                    Operator thing = LAST;
-                    pairs.add(new Pair(thing, sepArgs[++i]));
+                    Operator thing = Operator.LAST;
+                    pairs.add(new Pair(thing, sepArgs[i].charAt(++i)));
                 } else if (sepArgs[i].equals("*")) {
-                    Operator thing = ANY;
-                    pairs.add(new Pair(thing, sepArgs[++i]));
-                } else if (separatedArgs[i].matches("\\d+")) {
-                    Operator thing = NUM;
-                    pairs.add(new Pair(thing, sepArgs[i], sepArgs[++i]));
+                    Operator thing = Operator.ANY;
+                    pairs.add(new Pair(thing, sepArgs[++i].charAt(++i)));
+                } else if (sepArgs[i].matches("\\d+")) {
+                    Operator thing = Operator.NUM;
+                    pairs.add(new Pair(thing, Integer.parseInt(sepArgs[i]), sepArgs[i].charAt(++i)));
                 }
             }
         }
     }
-    public String getRawArg() {
-        return rawArgl;
-    }
-
-    public String[] getSepArgs() {
-        return sepArgs;
-    }
-
     public boolean getAndMatch() {
         return andMatch;
     }
