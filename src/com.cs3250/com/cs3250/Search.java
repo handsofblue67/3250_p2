@@ -25,71 +25,40 @@ public class Search {
         try {
             //if(args[1].matches("([(\\d+)(\\Q^\\E)(\\Q$\\E)(\\Q*\\E )](\\s)(.)*[(andMatch)(orMatch)]?")) {}
             scan = new Scanner(new File(args[0]));
-            if (verify.getAndMatch()) {
-                while (scan.hasNextLine()) {
-                    ++count;
-                    temp = scan.next().toLowerCase();
-                    isMatch = true;
-                    for (Pair _pair : _pairs) {
-                        Operator op = _pair.getOp();
-                        switch (op) {
-                            case FIRST: {
-                                isMatch = carrot(temp, _pair);
-                                break;
-                            }
-                            case LAST: {
-                                isMatch = money(temp, _pair);
-                                break;
-                            }
-                            case NUM: {
-                                isMatch = number(temp, _pair);
-                                break;
-                            }
-                            case ANY: {
-                                isMatch = astrix(temp, _pair);
-                                break;
-                            }
+            while (scan.hasNextLine()) {
+                ++count;
+                temp = scan.next().toLowerCase();
+                isMatch = true;
+                for (Pair _pair : _pairs) {
+                    Operator op = _pair.getOp();
+                    switch (op) {
+                        case FIRST: {
+                            isMatch = carrot(temp, _pair);
+                            break;
                         }
-                        if(!isMatch) {
+                        case LAST: {
+                            isMatch = money(temp, _pair);
+                            break;
+                        }
+                        case NUM: {
+                            isMatch = number(temp, _pair);
+                            break;
+                        }
+                        case ANY: {
+                            isMatch = astrix(temp, _pair);
                             break;
                         }
                     }
-                    if (isMatch) {
-                        System.out.println(count + " " + temp);
+                    if (verify.getAndMatch() && !isMatch) {
+                        break;
+                    }
+
+                    else if (!verify.getAndMatch() && isMatch) {
+                        break;
                     }
                 }
-            } else {
-                while (scan.hasNextLine()) {
-                    ++count;
-                    temp = scan.next().toLowerCase();
-                    isMatch = false;
-                    for (Pair _pair : _pairs) {
-                        Operator op = _pair.getOp();
-                            switch (op) {
-                                case FIRST: {
-                                    isMatch = carrot(temp, _pair);
-                                    break;
-                                }
-                                case LAST: {
-                                    isMatch = money(temp, _pair);
-                                    break;
-                                }
-                                case NUM: {
-                                    isMatch = number(temp, _pair);
-                                    break;
-                                }
-                                case ANY: {
-                                    isMatch = astrix(temp, _pair);
-                                    break;
-                                }
-                        }
-                        if(isMatch) {
-                            break;
-                        }
-                    }
-                    if (isMatch) {
-                        System.out.println(count + " " + temp);
-                    }
+                if (isMatch) {
+                    System.out.println(count + " " + temp);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -138,4 +107,3 @@ public class Search {
         return flag;
     }
 }
-
