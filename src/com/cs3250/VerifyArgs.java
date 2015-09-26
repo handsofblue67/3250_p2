@@ -13,7 +13,7 @@ public class VerifyArgs {
     }
 
     public void sepAndOr() {
-        rawArg = rawArg.trim();
+        rawArg.trim();
         String[] sepArgs;
 
         if (rawArg.equals("")) {
@@ -22,14 +22,14 @@ public class VerifyArgs {
 
         //search or " orMatch" if so, cut it off
         if (rawArg.contains(" ormatch")) {
-            rawArg = rawArg.replaceFirst(" ormatch", "");
+            rawArg.replaceFirst(" ormatch", "");
             andMatch = false;
         }
 
         //search for " andMatch" if so cut it off
         else if (rawArg.contains(" andmatch"))
         {
-            rawArg = rawArg.replaceFirst(" andmatch", "");
+            rawArg.replaceFirst(" andmatch", "");
         }
 
         //split array pairs, if odd number, error
@@ -45,7 +45,7 @@ public class VerifyArgs {
                     Operator thing = Operator.LAST;
                     pairs.add(new Pair(thing, sepArgs[++i].charAt(0)));
                 } else if (sepArgs[i].equals("*")) {
-                    Operator thing = Operator.ANY;
+                    Operator thing = Operator.EXISTS;
                     pairs.add(new Pair(thing, sepArgs[++i].charAt(0)));
                 } else if (sepArgs[i].matches("\\d+")) {
                     Operator thing = Operator.NUM;

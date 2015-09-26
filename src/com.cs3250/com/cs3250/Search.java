@@ -17,75 +17,79 @@ public class Search {
         // for (int i = 0; i < verify.pairs.size(); ++i) {
         //    //build regex
         //}
-        Pair pair;
         String temp;
-        boolean isMatch = false;
+        boolean isMatch;
         int count = 0; //keeps track of line number
         //use each argument pair to search file
         Scanner scan = null;
         try {
             //if(args[1].matches("([(\\d+)(\\Q^\\E)(\\Q$\\E)(\\Q*\\E )](\\s)(.)*[(andMatch)(orMatch)]?")) {}
             scan = new Scanner(new File(args[0]));
-            while (scan.hasNextLine()) {
-                ++count;
-                temp = scan.next().toLowerCase();
-                if (verify.getAndMatch()) {
-                    andOut:
-                    for (int i = 0; i < _pairs.size(); ++i) {
-                        pair = _pairs.get(i);
-                        Operator op = pair.getOp();
-                        isMatch = true;
-                        while (isMatch) {
-                            switch (op) {
-                                case FIRST: {
-                                    isMatch = carrot(temp, pair);
-                                        break andOut;
-                                }
-                                case LAST: {
-                                    isMatch = money(temp, pair);
-                                        break andOut;
-                                }
-                                case NUM: {
-                                    isMatch = number(temp, pair);
-                                        break andOut;
-                                }
-                                case ANY: {
-                                    isMatch = astrix(temp, pair);
-                                        break andOut;
-                                }
+            if (verify.getAndMatch()) {
+                while (scan.hasNextLine()) {
+                    ++count;
+                    temp = scan.next().toLowerCase();
+                    isMatch = true;
+                    for (Pair _pair : _pairs) {
+                        Operator op = _pair.getOp();
+                        switch (op) {
+                            case FIRST: {
+                                isMatch = carrot(temp, _pair);
+                                break;
                             }
+                            case LAST: {
+                                isMatch = money(temp, _pair);
+                                break;
+                            }
+                            case NUM: {
+                                isMatch = number(temp, _pair);
+                                break;
+                            }
+                            case ANY: {
+                                isMatch = astrix(temp, _pair);
+                                break;
+                            }
+                        }
+                        if(!isMatch) {
+                            break;
                         }
                     }
-                } else {
-                    orOut:
-                    for (int i = 0; i < _pairs.size(); ++i) {
-                        isMatch = false;
-                        pair = _pairs.get(i);
-                        Operator op = pair.getOp();
-                        while (!isMatch) {
-                            switch (op) {
-                                case FIRST: {
-                                    isMatch = carrot(temp, pair);
-                                        break orOut;
-                                }
-                                case LAST: {
-                                    isMatch = money(temp, pair);
-                                        break orOut;
-                                }
-                                case NUM: {
-                                    isMatch = number(temp, pair);
-                                        break orOut;
-                                }
-                                case ANY: {
-                                    isMatch = astrix(temp, pair);
-                                        break orOut;
-                                }
-                            }
-                        }
+                    if (isMatch) {
+                        System.out.println(count + " " + temp);
                     }
                 }
-                if (isMatch) {
-                    System.out.println(count + " " + temp);
+            } else {
+                while (scan.hasNextLine()) {
+                    ++count;
+                    temp = scan.next().toLowerCase();
+                    isMatch = false;
+                    for (Pair _pair : _pairs) {
+                        Operator op = _pair.getOp();
+                            switch (op) {
+                                case FIRST: {
+                                    isMatch = carrot(temp, _pair);
+                                    break;
+                                }
+                                case LAST: {
+                                    isMatch = money(temp, _pair);
+                                    break;
+                                }
+                                case NUM: {
+                                    isMatch = number(temp, _pair);
+                                    break;
+                                }
+                                case ANY: {
+                                    isMatch = astrix(temp, _pair);
+                                    break;
+                                }
+                        }
+                        if(isMatch) {
+                            break;
+                        }
+                    }
+                    if (isMatch) {
+                        System.out.println(count + " " + temp);
+                    }
                 }
             }
         } catch (FileNotFoundException e) {
@@ -99,10 +103,9 @@ public class Search {
 
     public static boolean number(String _compare, Pair _pair) {
         boolean flag = false;
-        if(_pair.getNum() < _compare.length()) {
+        if (_pair.getNum() >= _compare.length()) {
             flag = false;
-        }
-        else if (_compare.charAt(_pair.getNum()) == _pair.getCh()) {
+        } else if (_compare.charAt(_pair.getNum()) == _pair.getCh()) {
             flag = true;
         }
         return flag;
@@ -135,3 +138,4 @@ public class Search {
         return flag;
     }
 }
+

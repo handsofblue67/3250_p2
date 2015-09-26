@@ -7,7 +7,7 @@ public class Pair {
 
     public Pair(Operator _op, int _num, char _ch) {
         op = _op;
-        num = _num - 1;
+        num = _num;
         ch = _ch;
     }
 
