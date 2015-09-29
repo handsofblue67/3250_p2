@@ -4,10 +4,7 @@
     <list default="true" id="f47875af-b8f2-4971-a2a5-b9f1e9c5d6bd" name="Default" comment="switching to regex validation and search">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/Search$1.class" afterPath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/Search$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/Search.class" afterPath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/Search.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/Search.java" afterPath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/Search.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/VerifyArgs.java" afterPath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/VerifyArgs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com.cs3250/input.txt" afterPath="$PROJECT_DIR$/src/com.cs3250/input.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/VerifyArgs.class" afterPath="$PROJECT_DIR$/src/com.cs3250/com/cs3250/VerifyArgs.class" />
     </list>
     <ignored path="3250_p2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -459,7 +456,7 @@
       <workItem from="1443319560554" duration="555000" />
       <workItem from="1443372348451" duration="1317000" />
       <workItem from="1443404493943" duration="1198000" />
-      <workItem from="1443479906444" duration="4733000" />
+      <workItem from="1443479906444" duration="5336000" />
     </task>
     <task id="LOCAL-00001" summary="ambiguously coming together">
       <created>1442950500048</created>
@@ -471,7 +468,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69456000" />
+    <option name="totallyTimeSpent" value="70059000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="720" extended-state="0" />
@@ -485,7 +482,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3183183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3183183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24853373" sideWeight="0.493994" order="0" side_tool="false" content_ui="combo" />
