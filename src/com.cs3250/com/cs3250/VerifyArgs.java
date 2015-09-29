@@ -16,6 +16,11 @@ public class VerifyArgs {
         rawArg = rawArg.trim();
         String[] sepArgs;
 
+        if(rawArg.length() == 1)
+        {
+
+        }
+
         if (rawArg.equals("")) {
             return; //print everything
         }
@@ -35,7 +40,7 @@ public class VerifyArgs {
         //split array pairs, if odd number, error
         sepArgs = rawArg.split(" ");
         if (sepArgs.length % 2 != 0) {
-            throw new IllegalArgumentException("Illegal Argument");
+            throw new IllegalArgumentException("incorrect syntax, please try again");
         } else {
             for (int i = 0; i < sepArgs.length; ++i) {
                 if (sepArgs[i].equals("^")) {
@@ -50,6 +55,8 @@ public class VerifyArgs {
                 } else if (sepArgs[i].matches("\\d+")) {
                     Operator thing = Operator.NUM;
                     pairs.add(new Pair(thing, Integer.parseInt(sepArgs[i]), sepArgs[++i].charAt(0)));
+                } else {
+                    throw new IllegalArgumentException("incorrect syntax, please try again");
                 }
             }
         }
